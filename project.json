@@ -1,0 +1,27 @@
+{
+  "name": "ChatGPT Multi-Part Response Composer",
+  "namespace": "local.chatgpt.response-composer",
+  "version": "0.9.0",
+  "description": "Конструктор многочастного ответа с локальным сохранением, библиотекой частей и наборов, drag&drop, изображениями, файлами и экспортом в ZIP",
+  "matches": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*"
+  ],
+  "requires": [
+    "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+  ],
+  "grant": "none",
+  "output": "dist/chatgpt-response-composer.user.js",
+  "modules": [
+    "src/js/00-state.js",
+    "src/js/10-ui-shell.js",
+    "src/js/20-layout-storage.js",
+    "src/js/30-blob-store.js",
+    "src/js/40-library-draft.js",
+    "src/js/50-sections.js",
+    "src/js/60-editor-attachments.js",
+    "src/js/70-export.js",
+    "src/js/80-actions.js",
+    "src/js/90-lifecycle.js"
+  ]
+}

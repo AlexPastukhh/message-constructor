@@ -1,0 +1,22 @@
+<div class="tm-section-header">
+    <div class="tm-section-drag-handle" draggable="true" title="Перетащить часть" aria-label="Перетащить часть">⋮⋮</div>
+    <span class="tm-section-index"></span>
+    <input class="tm-section-name-input" type="text" maxlength="120" placeholder="Название части" aria-label="Название части">
+    <button class="tm-icon-btn" data-action="save-part-template" title="Сохранить эту часть как шаблон">☆</button>
+    <button class="tm-icon-btn" data-action="up" title="Выше">↑</button>
+    <button class="tm-icon-btn" data-action="down" title="Ниже">↓</button>
+    <button class="tm-icon-btn" data-action="duplicate" title="Дублировать">⧉</button>
+    <button class="tm-icon-btn tm-delete" data-action="delete" title="Удалить">×</button>
+</div>
+<div class="tm-section-content">
+    <div class="tm-row">
+        <button class="tm-instructions-toggle" data-action="toggle-instructions" type="button">Инструкции</button>
+        <button class="tm-btn" data-action="insert-file" type="button" title="Добавить один или несколько файлов и вставить ссылки в текст">+ Файл</button>
+        <input class="tm-file-input" type="file" multiple>
+    </div>
+    <div class="tm-instructions-wrap">
+        <textarea class="tm-instructions" placeholder="Будут вставлены в самом начале этой части..."></textarea>
+    </div>
+    <div class="tm-label">Текст / изображения / файлы</div>
+    <div class="tm-editor" contenteditable="true" spellcheck="true"></div>
+</div>

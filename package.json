@@ -1,0 +1,10 @@
+{
+  "name": "chatgpt-response-composer-userscript",
+  "private": true,
+  "version": "0.9.0",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node build.mjs"
+  }
+}

@@ -1,0 +1,42 @@
+<div class="tm-header" title="Перетащить — переместить виджет; клик по свободной области хедера — свернуть">
+    <div class="tm-title">Response Composer<span class="tm-current-set-title"></span></div>
+    <button class="tm-btn" data-action="library" title="Шаблоны частей и наборы">Библиотека</button>
+    <button class="tm-btn" data-action="settings" title="Настройки">⚙</button>
+    <button class="tm-btn" data-action="add">+ Часть</button>
+    <button class="tm-btn" data-action="clear-content" title="Очистить текст, изображения и файлы, сохранив инструкции">Очистить</button>
+    <button class="tm-btn tm-btn-primary" data-action="export">Скачать ZIP</button>
+</div>
+<div class="tm-settings-panel">
+    <label class="tm-settings-label" for="tm-response-composer-launcher-zindex">z-index кнопки</label>
+    <input id="tm-response-composer-launcher-zindex" class="tm-zindex-input" data-zindex-target="launcher" type="number" min="0" max="2147483647" step="1" inputmode="numeric">
+    <label class="tm-settings-label" for="tm-response-composer-panel-zindex">z-index виджета</label>
+    <input id="tm-response-composer-panel-zindex" class="tm-zindex-input" data-zindex-target="panel" type="number" min="0" max="2147483647" step="1" inputmode="numeric">
+    <span class="tm-settings-hint">Значения независимы · 0–2147483647 · сохраняются в браузере</span>
+</div>
+<div class="tm-library-panel">
+    <div class="tm-library-row">
+        <span class="tm-label">Текущий набор</span>
+        <input class="tm-library-input tm-current-set-name" type="text" maxlength="120" placeholder="Например: Изучение">
+        <button class="tm-btn" data-action="new-set" type="button">Новый набор</button>
+        <button class="tm-btn" data-action="save-set" type="button">Сохранить набор</button>
+    </div>
+    <div class="tm-library-row">
+        <span class="tm-label">Наборы</span>
+        <select class="tm-library-select tm-saved-sets-select"></select>
+        <button class="tm-btn" data-action="load-set" type="button">Загрузить</button>
+        <button class="tm-btn" data-action="rename-set" type="button">Переименовать</button>
+        <button class="tm-btn" data-action="delete-set" type="button">Удалить</button>
+    </div>
+    <div class="tm-library-row">
+        <span class="tm-label">Части</span>
+        <select class="tm-library-select tm-part-templates-select"></select>
+        <button class="tm-btn" data-action="add-template-part" type="button">Добавить часть</button>
+        <button class="tm-btn" data-action="rename-template" type="button">Переименовать</button>
+        <button class="tm-btn" data-action="delete-template" type="button">Удалить</button>
+    </div>
+    <div class="tm-library-hint">Шаблоны и наборы сохраняют только названия частей и инструкции. Текст ответа, изображения и файлы в библиотеку не попадают.</div>
+</div>
+<div class="tm-sections"></div>
+<div class="tm-footer">
+    <span class="tm-status">Черновик сохраняется локально. Ctrl+V вставляет изображение; файлы можно добавить кнопкой.</span>
+</div>

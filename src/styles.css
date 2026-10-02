@@ -1,0 +1,413 @@
+#tm-response-composer-launcher {
+    position: fixed;
+    left: 18px;
+    top: 90px;
+    width: 50px;
+    height: 50px;
+    z-index: 2147483000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #4b4b4b;
+    border-radius: 14px;
+    background: #202020;
+    color: #f1f1f1;
+    box-shadow: 0 8px 24px rgba(0,0,0,.32);
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    font: 700 13px/1 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+#tm-response-composer-launcher:hover {
+    background: #2b2b2b;
+    border-color: #666;
+}
+
+#tm-response-composer-launcher.tm-dragging { cursor: grabbing; }
+
+#tm-response-composer {
+    position: fixed;
+    left: 18px;
+    top: 90px;
+    width: 540px;
+    height: 720px;
+    min-width: 380px;
+    min-height: 340px;
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+    z-index: 2147483000;
+    display: none;
+    flex-direction: column;
+    resize: both;
+    background: #161616;
+    color: #eee;
+    border: 1px solid #3a3a3a;
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.25);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow: hidden;
+}
+
+#tm-response-composer.tm-open { display: flex; }
+#tm-response-composer * { box-sizing: border-box; }
+
+.tm-header {
+    min-height: 58px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px 9px 14px;
+    background: #202020;
+    border-bottom: 1px solid #363636;
+    cursor: move;
+    user-select: none;
+    touch-action: none;
+}
+
+.tm-header.tm-dragging { cursor: grabbing; }
+
+.tm-title {
+    min-width: 0;
+    max-width: 230px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 650;
+    white-space: nowrap;
+    margin-right: auto;
+    pointer-events: none;
+}
+
+.tm-btn,
+.tm-icon-btn,
+.tm-instructions-toggle {
+    border: 1px solid #484848;
+    background: #292929;
+    color: #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.tm-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+    font-weight: 550;
+}
+
+.tm-btn:hover,
+.tm-icon-btn:hover,
+.tm-instructions-toggle:hover { background: #353535; }
+
+.tm-btn-primary {
+    background: #0f7b55;
+    border-color: #139867;
+}
+
+.tm-btn-primary:hover { background: #119362; }
+
+.tm-settings-panel {
+    display: none;
+    flex-shrink: 0;
+    padding: 9px 12px;
+    background: #1b1b1b;
+    border-bottom: 1px solid #343434;
+}
+
+.tm-settings-panel.tm-open {
+    display: grid;
+    grid-template-columns: max-content minmax(110px, 170px);
+    align-items: center;
+    gap: 8px 10px;
+}
+
+.tm-settings-label {
+    color: #bdbdbd;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.tm-zindex-input {
+    width: 150px;
+    min-width: 0;
+    padding: 6px 8px;
+    border: 1px solid #484848;
+    border-radius: 7px;
+    background: #151515;
+    color: #eee;
+    outline: none;
+    font: 12px/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.tm-zindex-input:focus { border-color: #707070; }
+
+.tm-settings-hint {
+    grid-column: 1 / -1;
+    min-width: 0;
+    color: #777;
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tm-library-panel {
+    display: none;
+    flex-shrink: 0;
+    padding: 10px 12px;
+    background: #1b1b1b;
+    border-bottom: 1px solid #343434;
+    gap: 9px;
+}
+
+.tm-library-panel.tm-open { display: grid; }
+
+.tm-library-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.tm-library-row > .tm-label {
+    width: 92px;
+    flex: 0 0 92px;
+}
+
+.tm-library-input,
+.tm-library-select {
+    min-width: 120px;
+    flex: 1 1 180px;
+    padding: 6px 8px;
+    border: 1px solid #484848;
+    border-radius: 7px;
+    background: #151515;
+    color: #eee;
+    outline: none;
+    font: 12px/1.3 inherit;
+}
+
+.tm-library-input:focus,
+.tm-library-select:focus { border-color: #707070; }
+
+.tm-library-hint {
+    color: #777;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.tm-sections {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tm-section {
+    flex-shrink: 0;
+    border: 1px solid #383838;
+    background: #202020;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: opacity .12s ease, transform .12s ease;
+}
+
+.tm-section.tm-section-dragging {
+    opacity: .55;
+}
+
+.tm-section-header {
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 8px 7px 12px;
+    background: #262626;
+    border-bottom: 1px solid #373737;
+}
+
+.tm-section-index {
+    flex: 0 0 auto;
+    color: #858585;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.tm-section-name-input {
+    min-width: 70px;
+    flex: 1 1 150px;
+    margin-right: auto;
+    padding: 4px 7px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: transparent;
+    color: #eee;
+    outline: none;
+    font: 650 13px/1.25 inherit;
+}
+
+.tm-section-name-input:hover { background: #303030; }
+.tm-section-name-input:focus {
+    background: #181818;
+    border-color: #666;
+}
+
+.tm-section-drag-handle {
+    width: 24px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #8d8d8d;
+    border-radius: 6px;
+    cursor: grab;
+    user-select: none;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.tm-section-drag-handle:hover {
+    color: #eee;
+    background: #343434;
+}
+
+.tm-section-drag-handle:active { cursor: grabbing; }
+
+.tm-icon-btn {
+    height: 28px;
+    min-width: 30px;
+    padding: 0 7px;
+    color: #bbb;
+    font-size: 13px;
+}
+
+.tm-delete:hover {
+    background: #642c2c;
+    border-color: #944141;
+}
+
+.tm-section-content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tm-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tm-label {
+    color: #9f9f9f;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.tm-instructions-toggle {
+    padding: 6px 9px;
+    font-size: 11px;
+    color: #c7c7c7;
+}
+
+.tm-instructions-toggle.tm-has-value {
+    border-color: #47755f;
+    color: #cfe8da;
+}
+
+.tm-instructions-wrap {
+    display: none;
+}
+
+.tm-instructions-wrap.tm-open {
+    display: block;
+}
+
+.tm-instructions,
+.tm-editor {
+    width: 100%;
+    background: #181818;
+    color: #eee;
+    border: 1px solid #393939;
+    border-radius: 8px;
+    padding: 10px;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.tm-instructions {
+    display: block;
+    min-height: 84px;
+    max-height: 220px;
+    resize: vertical;
+}
+
+.tm-editor {
+    min-height: 145px;
+    max-height: 440px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.tm-instructions:focus,
+.tm-editor:focus { border-color: #6b6b6b; }
+
+.tm-editor:empty::before {
+    content: "Введите текст. Скриншот можно вставить Ctrl+V…";
+    color: #666;
+    pointer-events: none;
+}
+
+.tm-editor img {
+    display: block;
+    max-width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    margin: 9px 0;
+    border: 1px solid #454545;
+    border-radius: 7px;
+}
+
+.tm-editor a[data-file-id] {
+    display: inline-block;
+    margin: 3px 2px;
+    padding: 4px 7px;
+    border: 1px solid #46505a;
+    border-radius: 6px;
+    background: #20262b;
+    color: #b9d7f5;
+    text-decoration: none;
+    cursor: default;
+}
+
+.tm-file-input { display: none !important; }
+
+.tm-footer {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    background: #1d1d1d;
+    border-top: 1px solid #343434;
+    color: #888;
+    font-size: 11px;
+}
+
+.tm-empty {
+    padding: 30px 10px;
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+}
